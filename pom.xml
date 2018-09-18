@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starters</artifactId>
+        <version>2.0.4.RELEASE</version>
+    </parent>
+    <groupId>blog.svenbayer</groupId>
+    <artifactId>cache-refresh-ahead-spring-boot-starter</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>cache-refresh-ahead</name>
+    <description>Spring Boot Cache Refresh Ahead Starter</description>
+    <url>https://github.com/SvenBayer/cache-refresh-ahead-spring-boot-starter</url>
+
+    <properties>
+        <sonar.language>java</sonar.language>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-context.version>5.0.8.RELEASE</spring-context.version>
+        <caffeine.version>2.6.2</caffeine.version>
+        <cache2k.version>1.2.0.Final</cache2k.version>
+    </properties>
+
+    <inceptionYear>2018</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>svenbayer.blog</id>
+            <name>Sven Bayer</name>
+            <email>svenbayer.blog@gmail.com</email>
+            <url>https://svenbayer.blog</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/SvenBayer/cache-refresh-ahead-spring-boot-starter.git</connection>
+        <developerConnection>scm:git:ssh://github.com:SvenBayer/cache-refresh-ahead-spring-boot-starter.git</developerConnection>
+        <url>http://github.com/SvenBayer/cache-refresh-ahead-spring-boot-starter/tree/master</url>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-context.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring-context.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Caffeine Cache -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Cache2k -->
+        <dependency>
+            <groupId>org.cache2k</groupId>
+            <artifactId>cache2k-api</artifactId>
+            <version>${cache2k.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.cache2k</groupId>
+            <artifactId>cache2k-core</artifactId>
+            <version>${cache2k.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.cache2k</groupId>
+            <artifactId>cache2k-spring</artifactId>
+            <version>${cache2k.version}</version>
+        </dependency>
+    </dependencies>
+</project>
