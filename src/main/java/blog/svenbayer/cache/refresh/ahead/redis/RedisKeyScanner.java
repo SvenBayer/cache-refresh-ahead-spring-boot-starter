@@ -10,10 +10,11 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.stereotype.Component;
 
 @Conditional(value = EnableCachingCondition.class)
 @ConditionalOnClass(value = { RedisConnectionFactory.class, RedisCacheManager.class })
-@Configuration
+@Component
 public class RedisKeyScanner {
 
     private RedisConnectionFactory redisConnectionFactory;

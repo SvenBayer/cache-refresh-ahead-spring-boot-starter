@@ -7,13 +7,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.stereotype.Component;
 
-import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Conditional(value = EnableCachingCondition.class)
 @ConditionalOnClass(value = { RedisConnectionFactory.class, RedisCacheManager.class })
 @EnableConfigurationProperties(ReloadAheadProperties.class)
-@Configuration
+@Component
 public class RedisCacheReloadAheadScheduler {
 
     private RedisCacheReloader redisCacheReloader;
@@ -43,8 +42,7 @@ public class RedisCacheReloadAheadScheduler {
     }
 
     private void reloadAheadValuesForKeys() {
-        Collection<String> cacheNames = redisCacheManager.getCacheNames();
-        cacheNames.stream()
+        redisCacheManager.getCacheNames().stream()
                 .map(cacheName -> redisCacheManager.getCache(cacheName))
                 .filter(Objects::nonNull)
                 .forEach(redisCacheReloader::reloadCache);
