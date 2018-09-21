@@ -1,12 +1,9 @@
 package blog.svenbayer.cache.refresh.ahead.config;
 
-import blog.svenbayer.cache.refresh.ahead.condition.EnableCachingCondition;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Conditional;
 
 import java.time.Duration;
 
-@Conditional(value = EnableCachingCondition.class)
 @ConfigurationProperties(prefix = ReloadAheadProperties.CACHE_RELOAD_AHEAD)
 public class ReloadAheadProperties {
 

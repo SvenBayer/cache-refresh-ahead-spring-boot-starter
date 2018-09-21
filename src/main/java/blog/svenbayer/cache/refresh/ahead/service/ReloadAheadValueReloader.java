@@ -1,33 +1,29 @@
-package blog.svenbayer.cache.refresh.ahead;
+package blog.svenbayer.cache.refresh.ahead.service;
 
-import blog.svenbayer.cache.refresh.ahead.condition.EnableCachingCondition;
-import blog.svenbayer.cache.refresh.ahead.key.ReloadAheadKey;
+import blog.svenbayer.cache.refresh.ahead.model.ReloadAheadKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.Advised;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-@Conditional(value = EnableCachingCondition.class)
 @Service
-public class ReloadAheadService {
+public class ReloadAheadValueReloader {
 
-    private static final Logger logger = LoggerFactory.getLogger(ReloadAheadService.class);
+    private static final Logger logger = LoggerFactory.getLogger(ReloadAheadValueReloader.class);
 
     private BeanFactory beanFactory;
 
     @Autowired
-    public ReloadAheadService(BeanFactory beanFactory) {
+    public ReloadAheadValueReloader(BeanFactory beanFactory) {
         this.beanFactory = beanFactory;
     }
 
-    public Object reloadAheadMethod(Object objectKey) {
-        ReloadAheadKey key = (ReloadAheadKey) objectKey;
+    public Object reloadCacheForKey(ReloadAheadKey key) {
         try {
             logger.info("Starting re-population for parameters '{}'", key.getParameters());
 
@@ -56,7 +52,7 @@ public class ReloadAheadService {
             logger.info("Finished re-population for parameters '{}' with value '{}'", key.getParameters(), cacheValue);
             return cacheValue;
         } catch (Exception e) {
-            throw new IllegalStateException("ReloadError for key " + objectKey, e);
+            throw new IllegalStateException("ReloadError for key " + key, e);
         }
     }
 }

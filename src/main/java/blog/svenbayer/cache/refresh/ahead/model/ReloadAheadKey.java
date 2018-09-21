@@ -1,4 +1,4 @@
-package blog.svenbayer.cache.refresh.ahead.key;
+package blog.svenbayer.cache.refresh.ahead.model;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

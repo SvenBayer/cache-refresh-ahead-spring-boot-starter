@@ -1,14 +1,13 @@
-package blog.svenbayer.cache.refresh.ahead.key;
+package blog.svenbayer.cache.refresh.ahead.service;
 
-import blog.svenbayer.cache.refresh.ahead.condition.EnableCachingCondition;
+import blog.svenbayer.cache.refresh.ahead.model.ReloadAheadKey;
 import org.springframework.cache.interceptor.KeyGenerator;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 
-@Conditional(value = EnableCachingCondition.class)
-@Component("reloadAheadKeyGenerator")
+@Service("reloadAheadKeyGenerator")
 public class ReloadAheadKeyGenerator implements KeyGenerator {
 
     @Override

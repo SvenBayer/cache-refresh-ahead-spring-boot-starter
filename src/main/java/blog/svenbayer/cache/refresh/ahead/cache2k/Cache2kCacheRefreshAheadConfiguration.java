@@ -1,9 +1,8 @@
 package blog.svenbayer.cache.refresh.ahead.cache2k;
 
-import blog.svenbayer.cache.refresh.ahead.ReloadAheadService;
-import blog.svenbayer.cache.refresh.ahead.condition.EnableCachingCondition;
 import blog.svenbayer.cache.refresh.ahead.config.ReloadAheadProperties;
-import blog.svenbayer.cache.refresh.ahead.key.ReloadAheadKey;
+import blog.svenbayer.cache.refresh.ahead.model.ReloadAheadKey;
+import blog.svenbayer.cache.refresh.ahead.service.ReloadAheadValueReloader;
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.extra.spring.SpringCache2kCacheManager;
 import org.cache2k.integration.CacheLoader;
@@ -13,33 +12,31 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
-@Conditional(value = EnableCachingCondition.class)
-@ConditionalOnClass(SpringCache2kCacheManager.class)
-@EnableConfigurationProperties(ReloadAheadProperties.class)
-@Component
-public class Cache2kCacheReloader {
+//@ConditionalOnClass(SpringCache2kCacheManager.class)
+//@EnableConfigurationProperties(ReloadAheadProperties.class)
+//@Component
+public class Cache2kCacheRefreshAheadConfiguration {
 
     private ReloadAheadProperties reloadAheadProperties;
-    private ReloadAheadService reloadAheadService;
+    private ReloadAheadValueReloader reloadAheadValueReloader;
 
-    @Autowired
-    public Cache2kCacheReloader(ReloadAheadProperties reloadAheadProperties, ReloadAheadService reloadAheadService) {
+    //@Autowired
+    public Cache2kCacheRefreshAheadConfiguration(ReloadAheadProperties reloadAheadProperties, ReloadAheadValueReloader reloadAheadValueReloader) {
         this.reloadAheadProperties = reloadAheadProperties;
-        this.reloadAheadService = reloadAheadService;
+        this.reloadAheadValueReloader = reloadAheadValueReloader;
     }
 
-    @Bean
-    @ConditionalOnMissingBean
+    //@Bean
+    //@ConditionalOnMissingBean
     public CacheManager reloadAheadCache2kManager() {
         CacheLoader<ReloadAheadKey, Object> loader = new CacheLoader<ReloadAheadKey, Object>() {
             @Override
             public Object load(ReloadAheadKey o) {
-                return reloadAheadService.reloadAheadMethod(o);
+                return reloadAheadValueReloader.reloadCacheForKey(o);
             }
         };
         SpringCache2kCacheManager cacheManager = new SpringCache2kCacheManager()

@@ -1,11 +1,6 @@
 package blog.svenbayer.cache.refresh.ahead.redis.transformer;
 
-import blog.svenbayer.cache.refresh.ahead.condition.EnableCachingCondition;
-import blog.svenbayer.cache.refresh.ahead.key.ReloadAheadKey;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
+import blog.svenbayer.cache.refresh.ahead.model.ReloadAheadKey;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
@@ -14,8 +9,6 @@ import java.io.ObjectInputStream;
 import java.util.Arrays;
 import java.util.Base64;
 
-@Conditional(value = EnableCachingCondition.class)
-@ConditionalOnClass(value = { RedisConnectionFactory.class, RedisCacheManager.class })
 @Service
 public class RedisKeyTransformerService {
 
