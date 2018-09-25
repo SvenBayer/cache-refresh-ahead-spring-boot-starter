@@ -1,12 +1,12 @@
 package blog.svenbayer.cache.refresh.ahead;
 
 import blog.svenbayer.cache.refresh.ahead.caffeine.CaffeineCacheRefreshAheadConfiguration;
-import blog.svenbayer.cache.refresh.ahead.caffeine.service.CaffeineCacheRetriever;
 import blog.svenbayer.cache.refresh.ahead.condition.EnableCachingCondition;
 import blog.svenbayer.cache.refresh.ahead.config.ReloadAheadProperties;
-import blog.svenbayer.cache.refresh.ahead.service.*;
+import blog.svenbayer.cache.refresh.ahead.service.ReloadAheadKeyGenerator;
+import blog.svenbayer.cache.refresh.ahead.service.ReloadAheadService;
+import blog.svenbayer.cache.refresh.ahead.service.ReloadAheadValueReloader;
 import blog.svenbayer.cache.refresh.ahead.task.ReloadAheadCacheRefreshAheadScheduler;
-import com.github.benmanes.caffeine.cache.CaffeineKeyRetriever;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

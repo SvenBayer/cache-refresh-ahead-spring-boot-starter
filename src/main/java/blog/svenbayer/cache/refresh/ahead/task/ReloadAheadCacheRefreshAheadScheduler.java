@@ -3,10 +3,8 @@ package blog.svenbayer.cache.refresh.ahead.task;
 import blog.svenbayer.cache.refresh.ahead.config.ReloadAheadProperties;
 import blog.svenbayer.cache.refresh.ahead.service.ReloadAheadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.Executors;
