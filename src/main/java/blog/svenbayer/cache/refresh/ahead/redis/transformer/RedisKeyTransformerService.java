@@ -1,7 +1,6 @@
 package blog.svenbayer.cache.refresh.ahead.redis.transformer;
 
 import blog.svenbayer.cache.refresh.ahead.model.ReloadAheadKey;
-import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.io.ObjectInputStream;
 import java.util.Arrays;
 import java.util.Base64;
 
-@Service
 public class RedisKeyTransformerService {
 
     public ReloadAheadKey transformReloadAheadKey(byte[] key, String cacheName) {

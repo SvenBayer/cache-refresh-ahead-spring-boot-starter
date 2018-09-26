@@ -1,3 +1,4 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+blog.svenbayer.cache.refresh.ahead.caffeine.CaffeineCacheRefreshAheadConfiguration,\
 blog.svenbayer.cache.refresh.ahead.CacheRefreshAheadConfiguration

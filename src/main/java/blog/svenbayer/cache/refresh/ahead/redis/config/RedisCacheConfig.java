@@ -1,28 +1,22 @@
 package blog.svenbayer.cache.refresh.ahead.redis.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.stereotype.Component;
 
-@Component
 public class RedisCacheConfig extends CachingConfigurerSupport {
 
     private CacheProperties cacheProperties;
     private RedisProperties redisProperties;
 
-    @Autowired
     public RedisCacheConfig(CacheProperties cacheProperties, RedisProperties redisProperties) {
         this.cacheProperties = cacheProperties;
         this.redisProperties = redisProperties;

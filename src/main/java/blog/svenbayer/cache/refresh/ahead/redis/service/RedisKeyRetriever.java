@@ -8,14 +8,12 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.ScanOptions;
-import org.springframework.stereotype.Service;
 
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-@Service
 public class RedisKeyRetriever implements ReloadAheadKeyRetriever {
 
     private RedisConnectionFactory redisConnectionFactory;

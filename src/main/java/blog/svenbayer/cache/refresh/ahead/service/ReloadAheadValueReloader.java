@@ -5,20 +5,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.Advised;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-@Service
 public class ReloadAheadValueReloader {
 
     private static final Logger logger = LoggerFactory.getLogger(ReloadAheadValueReloader.class);
 
     private BeanFactory beanFactory;
 
-    @Autowired
     public ReloadAheadValueReloader(BeanFactory beanFactory) {
         this.beanFactory = beanFactory;
     }
