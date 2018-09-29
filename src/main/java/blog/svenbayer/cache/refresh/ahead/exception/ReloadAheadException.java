@@ -14,19 +14,21 @@
  * limitations under the License.
  */
 
-package blog.svenbayer.cache.refresh.ahead.task;
-
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.EventListener;
+package blog.svenbayer.cache.refresh.ahead.exception;
 
 /**
- * Schedules the repeating refresh of caches once Spring is initialised.
+ * Exception thrown in context of reload ahead caches.
  *
  * @author Sven Bayer
  */
-public interface ReloadAheadCacheRefreshAheadScheduler {
+public class ReloadAheadException extends RuntimeException {
 
-	@EventListener
-	void refreshCaches(ContextRefreshedEvent event);
+	public ReloadAheadException(String message) {
+		super(message);
+	}
+
+	public ReloadAheadException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
 }
