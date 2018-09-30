@@ -19,6 +19,10 @@ Currently, only Caffeine and Redis Cache is supported.
 
 ## Usage
 
+### Examples
+
+You can find examples of how to use the library at [https://github.com/SvenBayer/cache-refresh-ahead-samples](https://github.com/SvenBayer/cache-refresh-ahead-samples)
+
 ### Preprequisites
 
 You have to add @EnableCaching to your project and define a CacheManager bean.
