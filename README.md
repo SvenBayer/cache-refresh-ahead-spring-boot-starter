@@ -1,3 +1,7 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/blog.svenbayer/cache-refresh-ahead-spring-boot-starter/badge.svg?style=plastic)](https://search.maven.org/search?q=g:blog.svenbayer%20AND%20a:cache-refresh-ahead-spring-boot-starter)
+[![Javadocs](http://javadoc.io/badge/blog.svenbayer/cache-refresh-ahead-spring-boot-starter.svg?color=blue)](http://javadoc.io/doc/blog.svenbayer/cache-refresh-ahead-spring-boot-starter)
+[![Project Stats](https://www.openhub.net/p/cache-refresh-ahead-spring-boot-starter/widgets/project_thin_badge?format=gif&ref=Thin+badge)](https://www.openhub.net/p/cache-refresh-ahead-spring-boot-starter)
+
 # Cache Refresh Ahead Starter
 
 A Cache Refresh-Ahead Spring Boot Starter for [Caffeine](https://github.com/ben-manes/caffeine) and [Redis](https://projects.spring.io/spring-data-redis/) cache!
