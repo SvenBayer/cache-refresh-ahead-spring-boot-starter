@@ -11,7 +11,7 @@
     <groupId>blog.svenbayer</groupId>
     <artifactId>cache-refresh-ahead-spring-boot-starter</artifactId>
     <version>1.0.1.BUILD-SNAPSHOT</version>
-    <name>cache-refresh-ahead</name>
+    <name>cache-refresh-ahead-spring-boot-starter</name>
     <description>Spring Boot Cache Refresh Ahead Starter</description>
     <url>https://github.com/SvenBayer/cache-refresh-ahead-spring-boot-starter</url>
 

@@ -57,4 +57,4 @@ jobs:
           curl --user ${CIRCLE_API_PROJECT_TOKEN}: \
             --header "Content-Type: application/json" \
             --request POST \
-            https://circleci.com/api/v1.1/project/github/SvenBayer/cache-refresh-ahead/tree/master
+            https://circleci.com/api/v1.1/project/github/SvenBayer/cache-refresh-ahead-samples/tree/master
