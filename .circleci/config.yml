@@ -1,0 +1,60 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+    # specify the version you desire here
+    - image: circleci/openjdk:8-jdk
+
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx1600m
+
+    steps:
+    - checkout
+
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "pom.xml" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+
+    - run:
+        name: "Resolving Maven Dependencies"
+        command: mvn dependency:go-offline
+
+    - save_cache:
+        paths:
+        - ~/.m2
+        key: v1-dependencies-{{ checksum "pom.xml" }}
+
+    # run tests!
+    - run:
+        name: "Running Tests"
+        command: mvn verify -Psonar
+
+    # run SonarQube
+    - run:
+        name: "Run SonarQube"
+        when: on_success
+        command: mvn sonar:sonar -Dsonar.organization=svenbayer-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARQUBE_TOKEN}
+
+    - run:
+        name: "Snapshot Deployment"
+        when: on_success
+        command: mvn -s ./.circleci/.circleci.settings.xml -DskipTests -Dmaven.install.skip deploy -Psnapshot
+
+    - run:
+        name: "Integration Tests"
+        when: on_success
+        command: |
+          curl --user ${CIRCLE_API_PROJECT_TOKEN}: \
+            --header "Content-Type: application/json" \
+            --request POST \
+            https://circleci.com/api/v1.1/project/github/SvenBayer/cache-refresh-ahead/tree/master
